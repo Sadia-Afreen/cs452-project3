@@ -25,5 +25,6 @@ int main(int argc, char **argv)
   end = getMilliSeconds();
   printf("%f %d\n", end - start, t);
 
+  free(A_);
   return 0;
 }

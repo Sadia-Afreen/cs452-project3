@@ -50,10 +50,12 @@ fi
 
 # Generate data by running the program with different thread counts
 echo "Running myprogram to generate data"
-echo "#Time Threads" > "$data_file"
+echo "#Threads Time(ms)" > "$data_file"
 for n in {1..32}; do
     echo -ne "Running with $n thread(s) \r"
-    ./myprogram "$size" "$n" >> "$data_file"
+    # Capture both the thread count and time from myprogram output
+    result=$(./myprogram "$size" "$n")
+    echo "$result" >> "$data_file"
 done
 echo -e "\nData generation complete."
 
